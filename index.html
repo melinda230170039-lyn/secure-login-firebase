@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Login</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Kanvas untuk partikel -->
+  <canvas id="bgCanvas"></canvas>
+
+  <div class="container">
+    <!-- Kotak Login -->
+    <div class="box">
+      <h2>Login</h2>
+      <input type="email" id="loginEmail" placeholder="Enter your email" required />
+      <input type="password" id="loginPassword" placeholder="Enter your password" required />
+      <button id="loginBtn">Login</button>
+      <p>Don't have an account? <a href="register.html">Signup now</a></p>
+    </div>
+
+    <!-- Logo + Bacaan -->
+    <div class="side-info">
+      <img src="https://cdn-icons-png.flaticon.com/512/906/906343.png" alt="Tech Logo">
+      <h3>Secure Login System</h3>
+      <p>
+        Empowering business through secure networks and smart innovation.<br>
+        Join the future of technology with us.
+      </p>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="particles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

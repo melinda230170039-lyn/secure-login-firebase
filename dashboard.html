@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard - Secure Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top left, #240046, #3c096c, #5a189a);
+      color: #fff;
+      overflow-x: hidden;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 10px #7209b7;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      text-shadow: 0 0 15px #b5179e;
+    }
+
+    #user-email {
+      font-weight: 600;
+      color: #c77dff;
+    }
+
+    .logout-btn {
+      background: linear-gradient(90deg, #7209b7, #4361ee);
+      border: none;
+      color: white;
+      padding: 10px 25px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .logout-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #4895ef;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      padding: 60px;
+      gap: 40px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 30px;
+      width: 300px;
+      text-align: center;
+      transition: 0.4s ease;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 25px #9d4edd;
+    }
+
+    .card h2 {
+      color: #f72585;
+      margin-bottom: 15px;
+      text-shadow: 0 0 8px #b5179e;
+    }
+
+    .card p {
+      color: #ddd;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      color: #b197fc;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>💼 Secure Login Dashboard</h1>
+    <div>
+      Welcome, <span id="user-email"></span>
+      <button id="logoutBtn" class="logout">Logout</button>
+    </div>
+  </header>
+
+  <section class="container">
+    <div class="card">
+      <h2>👩‍💻 User Data</h2>
+      <p>Manage and view all registered user data securely in the cloud system.</p>
+    </div>
+    <div class="card">
+      <h2>🔐 Network Security</h2>
+      <p>Monitor real-time protection of data and encrypted connections.</p>
+    </div>
+    <div class="card">
+      <h2>☁️ Cloud System</h2>
+      <p>Integrated cloud technology to ensure high availability and scalability.</p>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Secure Cloud System — Designed by <b>Melinda</b>
+  </footer>
+
+  <script type="module">
+    import {getAuth, signOut, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import {app} from "./firebase-config.js";
+
+    const auth = getAuth(app);
+    const emailDisplay = document.getElementById("user-email");
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    // Cek user login
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        emailDisplay.textContent = user.email;
+      } else {
+        window.location.href = "index.html";
+      }
+    });
+
+    // Logout
+    logoutBtn.addEventListener("click", (e) => {
+      signOut(auth).then(() => {
+        Swal.fire("Logout berhasil!");
+        window.location.href = "index.html";
+      });
+    });
+    <script>
+      firebase.auth().onAuthStateChanged((user) =>){
+  if (!user){
+        Swal.fire({
+          icon: "warning",
+          title: "Anda belum login!",
+          text: "Silahkan login terlebih dahulu untuk mengakses halaman ini.",
+          showConfirmButton: false,
+          timer: 1800,
+          timerProgressBar: true
+        }).then((){
+          //kalau belum login, redirect ke halaman login
+          window.location.href = "index.html";
+        });
+  } else {
+        console.log("User login:", user.email);
+  }
+  });
+  </script>
+  <script src="particles.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="firebase-config.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

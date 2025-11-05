@@ -1,0 +1,187 @@
+/* ===== Canvas Particles ===== */
+#bgCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* tetap di belakang */
+  background: transparent;
+}
+/* ===== Background perusahaan teknologi ===== */
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1500&q=80') no-repeat center center/cover;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Efek gradasi neon di atas background */
+body::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 10, 60, 0.75);
+  backdrop-filter: blur(3px);
+  z-index: 0;
+}
+
+/* ===== Container utama ===== */
+.container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+/* ===== Kotak Login ===== */
+.box {
+  width: 380px;
+  background: rgba(10, 10, 25, 0.88);
+  border-radius: 15px;
+  box-shadow: 0 0 25px rgba(100, 0, 255, 0.4);
+  padding: 40px 35px;
+  color: #fff;
+  backdrop-filter: blur(10px);
+  animation: fadeIn 1s ease;
+}
+
+/* Animasi muncul lembut */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.box h2 {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 25px;
+  font-weight: 600;
+  text-shadow: 0 0 10px #b5179e;
+}
+
+.box input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px auto;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+.box input:focus {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 10px #b5179e;
+}
+
+/* ====== Fix ukuran tombol sama dengan input ====== */
+.box input,
+.box button {
+  width: 100%;
+  max-width: 320px;         /* biar tetap seragam dan gak kepanjangan di layar besar */
+  display: block;
+  margin: 10px auto;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  font-size: 15px;
+  transition: 0.3s ease;
+}
+
+/* Input style */
+.box input {
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.box input:focus {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 0 12px #b5179e;
+}
+
+/* Tombol Login */
+.box button {
+  padding: 12px;
+  background: linear-gradient(90deg, #b5179e, #7209b7, #4361ee);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 10px rgba(114, 9, 183, 0.7);
+}
+
+.box button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px rgba(181, 23, 158, 1);
+}
+}
+
+.box button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(181, 23, 158, 1);
+}
+
+.box p {
+  text-align: center;
+  color: #ccc;
+  font-size: 13px;
+}
+
+.box a {
+  color: #b5179e;
+  text-decoration: none;
+}
+
+.box a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Sisi Kanan (Logo + Bacaan) ===== */
+.side-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  max-width: 380px;
+  animation: slideIn 1.2s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(60px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.side-info img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 10px rgba(114, 9, 183, 0.9));
+}
+
+.side-info h3 {
+  font-size: 22px;
+  text-shadow: 0 0 15px #b5179e;
+  margin-bottom: 10px;
+}
+
+.side-info p {
+  font-size: 15px;
+  color: #ddd;
+  line-height: 1.6;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
